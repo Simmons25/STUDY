@@ -1,0 +1,66 @@
+Q:
+
+给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。
+
+最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。
+
+你可以假设除了整数 0 之外，这个整数不会以零开头。
+
+示例 1:
+
+输入: [1,2,3]
+输出: [1,2,4]
+解释: 输入数组表示数字 123。
+示例 2:
+
+输入: [4,3,2,1]
+输出: [4,3,2,2]
+解释: 输入数组表示数字 4321。
+
+S:
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* plusOne(int* digits, int digitsSize, int* returnSize){
+    int length = digitsSize;
+    int i = 0;
+    int add_num = 1;
+    int flag = 0;
+    int tmpValue = 0;
+    int *return1 = (int *)malloc(sizeof(int)*length);
+    int *return2 = (int *)malloc(sizeof(int)*(length + 1));
+    for(i = length - 1;i >= 0;i--)
+    {
+        tmpValue = digits[i] + add_num;
+        if(tmpValue >= 10)
+        {
+            add_num = 1;
+           return1[i] = 0;
+           return2[i+1] = 0;
+        }
+        else
+        {
+            add_num = 0;
+            return1[i] = tmpValue;
+            return2[i+1] = tmpValue;
+        }
+        if((i == 0)&&(add_num == 1))
+        {
+            flag = 1;
+        }
+    }
+    if(flag == 1)
+    {
+        *returnSize = length + 1;
+        return2[0] = 1;
+        free(return1);
+        return return2;
+    }
+    else{
+        *returnSize = length;
+       free(return2);
+       return return1;
+    }
+}
+Note:1.参考了动态内存的申请，int *p=(int*)malloc(sizeof(int)*length),强制类型转换。
+      2.为了方便仅为，设置了一个return2从一开始，以防止进位数组越界。
