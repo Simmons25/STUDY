@@ -1,0 +1,41 @@
+Q:
+
+给定一个非负索引 k，其中 k ≤ 33，返回杨辉三角的第 k 行。
+
+
+
+在杨辉三角中，每个数是它左上方和右上方的数的和。
+
+示例:
+
+输入: 3
+输出: [1,3,3,1]
+
+
+
+
+S:
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* getRow(int rowIndex, int* returnSize){
+    int **array;
+    array=(int**)malloc(sizeof(int*)*(rowIndex+1));//*array=(int**)malloc(sizeof(int)*rowIndex+1)
+    *returnSize=rowIndex+1;
+    for(int i=0;i<rowIndex+1;i++)
+    {
+        array[i]=(int*)malloc(sizeof(int)*(i+1));
+        array[i][0]=array[i][i]=1;
+        for(int k=1;k<i;k++)
+        {
+            array[i][k]=array[i-1][k-1]+array[i-1][k];
+        }
+        
+
+    }
+return array[rowIndex];
+}
+
+NOTE:
+1.此题只需在上题的基础上修改一下输出的形式即可，输出对应行的数组的一、、第一个元素的地址。
