@@ -1,0 +1,59 @@
+Q:
+
+给定一个整数数组和一个整数 k，判断数组中是否存在两个不同的索引 i 和 j，使得 nums [i] = nums [j]，并且 i 和 j 的差的绝对值最大为 k。
+
+示例 1:
+
+输入: nums = [1,2,3,1], k = 3
+输出: true
+示例 2:
+
+输入: nums = [1,0,1,1], k = 1
+输出: true
+示例 3:
+
+输入: nums = [1,2,3,1,2,3], k = 2
+输出: false
+
+S:
+
+typedef struct tag_arr{
+    int value;
+    int pos;
+}arr;
+int compare(const void*a,const void*b){
+    if((*(arr*)a).value!=(*(arr*)b).value)
+    return (*(arr*)a).value>(*(arr*)b).value;
+    else
+    return (*(arr*)a).value-(*(arr*)b).value;
+
+}
+bool containsNearbyDuplicate(int* nums, int numsSize, int k){
+    arr *tmp;
+    tmp=(arr*)malloc(sizeof(arr)*numsSize);
+    for(int i=0;i<numsSize;i++)
+    {
+        tmp[i].value=nums[i];
+        tmp[i].pos=i;
+    }
+    qsort(tmp,numsSize,sizeof(arr),compare);
+    for(int i=0;i<numsSize-1;i++)
+    {
+        if(tmp[i].value!=tmp[i+1].value)
+        continue;
+        else
+        {
+            if(tmp[i+1].pos-tmp[i].pos<=k)
+            return true;
+    }
+    }
+    return false;
+
+
+
+}
+
+NOTE:
+1.还没有解决typedef与结构体结合的相关格式。
+2.还没搞懂return a>b与a-b在比较函数中的区别
+3.consis void*a的含义。
