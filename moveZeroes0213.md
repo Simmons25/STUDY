@@ -9,9 +9,9 @@
 
 必须在原数组上操作，不能拷贝额外的数组。
 尽量减少操作次数。
-------------------------------
+
 # c语言
-`void moveZeroes(int* nums, int numsSize){
+```void moveZeroes(int* nums, int numsSize){
     for(int i=0;i<numsSize;i++)
     {
         if(nums[i]==0)
@@ -25,7 +25,8 @@
             numsSize=numsSize-1;
         }
     }
-}`
------------------
+}```
+
+
 # 笔记：
 1.要注意在移动了一次0之后，numsize要减一，可视作后面的0已经固定了，i也要减一，以防跳过起始的元素。
