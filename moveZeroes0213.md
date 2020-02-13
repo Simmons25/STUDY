@@ -25,7 +25,7 @@
             numsSize=numsSize-1;
         }
     }
-}```
+}
 
 
 # 笔记：
