@@ -11,7 +11,6 @@ Q:
 尽量减少操作次数。
 
 S:
-
 void moveZeroes(int* nums, int numsSize){
     for(int i=0;i<numsSize;i++)
     {
@@ -29,5 +28,6 @@ void moveZeroes(int* nums, int numsSize){
     }
 
 }
+
 NOTE:
 1.要注意在移动了一次0之后，numsize要减一，可视作后面的0已经固定了，i也要减一，以防跳过起始的元素。
