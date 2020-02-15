@@ -14,7 +14,7 @@
 [5,6]
 
 # c语言代码
-```
+```//着色代码
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
