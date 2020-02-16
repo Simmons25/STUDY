@@ -1,5 +1,4 @@
-Q:
-
+# 问题
 给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。
 
 说明:
@@ -14,8 +13,8 @@ nums2 = [2,5,6],       n = 3
 
 输出: [1,2,2,3,5,6]
 
-S:
-
+# c语言代码
+```
 void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n){
     if(m==0)
     {
@@ -59,9 +58,43 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n){
     }
 
 }
+```
+# c++代码
+```
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        vector<int>nums(nums1);
+        int p=0,q=0,k=0;
+        while(p!=m&&q!=n)
+        {
+            if(nums[p]>=nums2[q])
+            {nums1[k]=nums2[q];
+            q++;
+            k++;}
+            if(nums[p]<nums2[q])
+            {
+                nums1[k]=nums[p];
+                p++;
+                k++;
 
-N:
+            }            
+        }
+        if(p<m)
+        {for(int i=p;i<m;i++){
+            nums1[k++]=nums[p];
+        }
+        }
+         if(q<n)
+        {for(int i=q;i<n;i++){
+            nums1[k++]=nums2[i];
+        }
+        }
+        ```
+# 笔记（c）
 1.开始阶段把i和j混淆了，导致最后debug的时候花了很长时间找出错误。
 2.忘记在每一次插入之后跳出循环，导致m一直在＋，数组越界，内存出错
 3.没有考虑m=0的特殊情况
 4.循环判断是最先使用的是m，但要考虑m是否等于一较为麻烦，则选择使用numsize1，将整个num1看成一个整体也可解决
+# 笔记（c++）
+1.用三指针的方法，利用两个数组已排好序的优势，使得统一来看两个数组，比较使较小的进入输出数组，指针向后移动。
