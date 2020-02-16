@@ -34,5 +34,32 @@ int findMaxConsecutiveOnes(int* nums, int numsSize){
 return max;
 }
 ```
+# c++代码
+```
+class Solution {
+public:
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int k=0;
+        int max=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]==1)
+            {
+                k=k+1;
+                if(k>max)
+                max=k;
+            }
+            else
+            {
+                if(k>max)
+                max=k;
+                k=0;
+            }
+
+        }
+     return max;   
+    }
+};
+```
 # 笔记
 1.当元素为零时的if不应包括k=0，因为无论是否更新max，k都要等于零。
