@@ -12,6 +12,7 @@
 n 是正整数,范围在 [1, 10000].
 数组中的元素范围在 [-10000, 10000].
 # c++代码
+```
 class Solution {
 public:
     int arrayPairSum(vector<int>& nums) {
@@ -28,5 +29,6 @@ return max;
         
     }
 };
+```
 # 笔记
 1.先排序，再将偶数的角标的数相加。
