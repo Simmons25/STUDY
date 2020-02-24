@@ -112,6 +112,38 @@ public:
 };
 ```
 # c++(栈)
+```
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> st;
+        if(s.size()==0)
+        return true;
+        else if(s.size()%2==1)
+        return false;
+        else if(s[0]==')'||s[0]==']'||s[0]=='}')
+        return false;
+        else
+        {st.push(s[0]);
+        for(int i=1;i<s.size();i++)
+        {
+            if(s[i]==')'&&st.top()=='(')
+            st.pop();
+            else if(s[i]==']'&&st.top()=='[')
+            st.pop();
+            else if(s[i]=='}'&&st.top()=='{')
+            st.pop();
+            else
+            st.push(s[i]);
+        }
+        if(st.empty())
+        return true;
+        else
+        return false;
+        }
+    }
+};
+```
 
 # 笔记
 1.普通做法中要注意隐藏的很深的夹的括号。
