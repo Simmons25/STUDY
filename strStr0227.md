@@ -88,5 +88,19 @@ public:
     }
 };
 ```
-#笔记2
-1.要注意这个方法的找到不相同的字符的时候要减去之前匹配相同的j，然后再加一。、
+# 笔记2
+1.要注意这个方法的找到不相同的字符的时候要减去之前匹配相同的j，然后再加一。
+# c++（库函数做法）
+```
+class Solution {
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        if(needle.empty())
+            return 0;
+        int pos=haystack.find(needle);
+        return pos;
+    }
+};
+```
+
